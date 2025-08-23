@@ -3,6 +3,13 @@
   "name": "Firefind",
   "version": "0.1.0",
   "description": "Shows the tag name of the element under your cursor in a dark floating box.",
+  "icons": {
+    "32": "../icons/firefind-flame-32.png",
+    "48": "../icons/firefind-flame-48.png",
+    "64": "../icons/firefind-flame-64.png",
+    "128": "../icons/firefind-flame-128.png",
+    "256": "../icons/firefind-flame-256.png"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
