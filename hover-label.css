@@ -1,0 +1,98 @@
+#hover-tag-label {
+  position: fixed;
+  left: 0; top: 0;
+  transform: translate(-9999px, -9999px); /* offscreen until positioned */
+  padding: 4px 8px;
+  background: rgba(18, 18, 18, 0.95);
+  color: #fff;
+  font: 500 12px/1 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+  z-index: 2147483647; /* above everything */
+  pointer-events: none; /* never intercepts mouse */
+  opacity: 0;
+  transition: opacity 120ms ease;
+  letter-spacing: 0.3px;
+  user-select: none;
+  white-space: nowrap;
+}
+#hover-tag-label.visible {
+  opacity: 1;
+}
+/* add to hover-label.css */
+#hover-tag-label { max-width: 60vw; }
+
+
+
+/* === Firefind DOM Panel === */
+#firefind-dom-panel {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  max-width: 32vw;
+  max-height: 40vh;
+  overflow: auto;
+  padding: 8px 10px;
+  background: rgba(18,18,18,0.95);
+  color: #fff;
+  font: 500 12px/1.3 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+  z-index: 2147483647;
+  user-select: none;
+  display: none; /* hidden until toggled */
+}
+
+#firefind-dom-panel.visible { display: block; }
+
+#firefind-dom-panel .ff-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+
+#firefind-dom-panel .ff-header .ff-pin {
+  margin-left: auto;
+  cursor: pointer;
+  opacity: 0.8;
+}
+#firefind-dom-panel .ff-header .ff-pin:hover { opacity: 1; }
+
+#firefind-dom-panel .ff-tree {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+#firefind-dom-panel .ff-node {
+  padding: 3px 6px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.06);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 120ms ease, transform 80ms ease;
+}
+#firefind-dom-panel .ff-node:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-1px);
+}
+
+#firefind-dom-panel .ff-node.ff-current {
+  background: rgba(0, 149, 255, 0.25);
+  outline: 1px solid rgba(0, 149, 255, 0.55);
+}
+
+#firefind-outline-ring {
+  position: fixed;
+  pointer-events: none;
+  z-index: 2147483646;
+  border: 2px solid rgba(0, 149, 255, 0.85);
+  border-radius: 3px;
+  box-shadow: 0 0 0 2px rgba(0,149,255,0.25);
+  transform: translate(-9999px, -9999px);
+}
+
+/* Keep your original label styles as-is; they look good. */
+

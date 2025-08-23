@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Firefind",
+  "version": "1.0.0",
+  "description": "Shows the tag name of the element under your cursor in a dark floating box.",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["hover-label.js"],
+      "css": ["hover-label.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}
+
