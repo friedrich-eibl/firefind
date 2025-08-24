@@ -8,7 +8,14 @@
 
 
 ## Installation
-Firefox Addons: [Store Page](https://addons.mozilla.org/de/firefox/addon/firefind/)
+You can either install the firefox extension straight from Mozilla add-ons:
+
+[![Firefox](https://img.shields.io/badge/Firefox%20extension-v0.1.0-orange?logo=firefoxbrowser)](https://addons.mozilla.org/de/firefox/addon/firefind/)
+
+Or download the zip file and manually add it to your browser:
+
+[![GitHub release](https://img.shields.io/github/v/release/friedrich-eibl/firefind?logo=github)](https://github.com/friedrich-eibl/firefind/releases/latest)
+
 
 ## Usage
 If you have Firefind active in your browser, simply hover over any web element that interests you, and you will see its tag name as well as any unique attributes. If you require further information, just press Ctrl+Shift+D and you will get a seamless overlay showing its precise place in the DOM.
