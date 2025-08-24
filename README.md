@@ -8,6 +8,13 @@
 
 
 ## Installation
+You can either install the firefox extension straight from Mozilla add-ons:
+
+[![Firefox](https://img.shields.io/badge/Firefox%20extension-v0.1.0-orange?logo=firefoxbrowser)](https://addons.mozilla.org/de/firefox/addon/firefind/)
+
+Or download the zip file and manually add it to your browser:
+
+[![GitHub release](https://img.shields.io/github/v/release/friedrich-eibl/firefind?logo=github)](https://github.com/friedrich-eibl/firefind/releases/latest)
 
 
 ## Usage
