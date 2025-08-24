@@ -96,3 +96,25 @@
 
 /* Keep your original label styles as-is; they look good. */
 
+
+/* Optional border when overlay is open */
+[data-firefind-border] {
+  outline: 2px dashed rgba(0,149,255,0.8) !important;
+  outline-offset: 2px !important;
+}
+
+/* Small toggle chip inside the panel header */
+#firefind-dom-panel .ff-toggle {
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+  cursor: pointer;
+  user-select: none;
+  margin-left: 6px;
+}
+#firefind-dom-panel .ff-toggle.active {
+  background: rgba(0,149,255,0.25);
+  outline: 1px solid rgba(0,149,255,0.55);
+}
+

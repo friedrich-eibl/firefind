@@ -300,4 +300,103 @@
   }).observe(document.documentElement, { childList: true, subtree: true });
 })();
 
+// === Firefind: Optional "border on hover when overlay open" ===
+(() => {
+  const LS_KEY = '__firefind_border_on_overlay';
+  const panel = document.getElementById('firefind-dom-panel') || (() => {
+    // If your script creates the panel elsewhere, we wait for it to appear.
+    const p = document.createElement('div');
+    p.id = 'firefind-dom-panel';
+    p.style.display = 'none';
+    document.documentElement.appendChild(p);
+    return p;
+  })();
+
+  // Insert a small toggle chip into the header (or create header if missing)
+  function ensureHeader() {
+    let header = panel.querySelector('.ff-header');
+    if (!header) {
+      header = document.createElement('div');
+      header.className = 'ff-header';
+      header.textContent = 'DOM tree (hovered)';
+      panel.prepend(header);
+    }
+    let toggle = header.querySelector('.ff-toggle[data-key="border"]');
+    if (!toggle) {
+      toggle = document.createElement('div');
+      toggle.className = 'ff-toggle';
+      toggle.dataset.key = 'border';
+      toggle.title = 'Show border on hovered element when overlay is open';
+      header.appendChild(toggle);
+    }
+    return header;
+  }
+
+  const header = ensureHeader();
+  const toggle = header.querySelector('.ff-toggle[data-key="border"]');
+
+  // state
+  let enableBorder = localStorage.getItem(LS_KEY) === '1';
+  let lastBordered = null;
+
+  function renderToggle() {
+    toggle.textContent = enableBorder ? 'Border: On' : 'Border: Off';
+    toggle.classList.toggle('active', enableBorder);
+  }
+  renderToggle();
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    enableBorder = !enableBorder;
+    localStorage.setItem(LS_KEY, enableBorder ? '1' : '0');
+    if (!enableBorder) clearBorder();
+    renderToggle();
+  });
+
+  function clearBorder() {
+    if (lastBordered && lastBordered.isConnected) {
+      lastBordered.removeAttribute('data-firefind-border');
+    }
+    lastBordered = null;
+  }
+
+  // When the panel becomes hidden, remove any leftover border
+  const mo = new MutationObserver(() => {
+    const visible = panel.classList.contains('visible') || panel.style.display !== 'none';
+    if (!visible) clearBorder();
+  });
+  mo.observe(panel, { attributes: true, attributeFilter: ['class', 'style'] });
+
+  // Hook mouse moves to apply border when conditions are met
+  function onMove(e) {
+    const el = (e.composedPath && e.composedPath()[0]) || e.target;
+    if (!(el instanceof Element)) return;
+
+    const panelVisible = panel.classList.contains('visible') || panel.style.display !== 'none';
+    if (!panelVisible || !enableBorder) {
+      // If not active, ensure previous border is cleared
+      clearBorder();
+      return;
+    }
+
+    // avoid marking our own UI elements
+    if (panel.contains(el)) return;
+
+    if (lastBordered !== el) {
+      clearBorder();
+      // Don’t decorate <html>/<body> to avoid goofy outlines
+      const tn = el.tagName;
+      if (tn !== 'HTML' && tn !== 'BODY') {
+        el.setAttribute('data-firefind-border', '');
+        lastBordered = el;
+      }
+    }
+  }
+
+  window.addEventListener('mousemove', onMove, { passive: true });
+  window.addEventListener('mouseover', onMove, { passive: true });
+
+  // Also clear when leaving the document (optional)
+  window.addEventListener('blur', clearBorder);
+})();
 
