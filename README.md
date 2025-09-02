@@ -3,16 +3,20 @@
 
 <img width="200" height="200" alt="firefind-flame" src="https://github.com/user-attachments/assets/851fd49e-efd6-4d79-99f0-08219c87b2c1" />
   
-<br>A simple  Firefox extension to inspect elements effortlessly.
+<br>A simple  Browser extension to inspect elements effortlessly.
 </div>
 
 
 ## Installation
-You can either install the firefox extension straight from Mozilla add-ons:
+You can either install the Firefox extension straight from Mozilla add-ons:
 
 [![Firefox](https://img.shields.io/badge/Firefox%20extension-v0.2.0-orange?logo=firefoxbrowser)](https://addons.mozilla.org/de/firefox/addon/firefind/)
 
-Or download the zip file and manually add it to your browser:
+Or, if you use Chrome:
+
+[![Chrome](https://img.shields.io/chrome-web-store/v/cdphefkblgfijdipgmmfkdgboanhhbjh?label=Chrome%20extension&logo=googlechrome)](https://chromewebstore.google.com/detail/cdphefkblgfijdipgmmfkdgboanhhbjh)
+
+Or download the zip file and manually add it to any browser of your choice:
 
 [![GitHub release](https://img.shields.io/github/v/release/friedrich-eibl/firefind?logo=github)](https://github.com/friedrich-eibl/firefind/releases/latest)
 
