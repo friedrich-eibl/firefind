@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Firefind",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shows the tag name of the element under your cursor in a dark floating box.",
   "icons": {
     "32": "icons/firefind-flame-32.png",
